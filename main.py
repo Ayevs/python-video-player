@@ -18,6 +18,10 @@ fullscreen_window = None
 def play_video():
     global fullscreen_window
 
+    if fullscreen_window:
+        fullscreen_window.destroy()
+        fullscreen_window = None
+
     file_path = filedialog.askopenfilename(
         filetypes=[("Video files", "*.mp4 *.mkv *.avi")]
     )
@@ -57,6 +61,11 @@ def stop_video():
         fullscreen_window = None
 
 
+def stop_and_play():
+    stop_video()
+    play_video()
+
+
 # Create the control window
 root = tk.Tk()
 root.title("Video Player Controls")
@@ -65,7 +74,7 @@ root.geometry(
 )  # position on main monitor
 
 # buttons
-open_btn = tk.Button(root, text="Open Video", command=play_video)
+open_btn = tk.Button(root, text="Open Video", command=stop_and_play)
 open_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
 stop_btn = tk.Button(root, text="Stop", command=stop_video)
