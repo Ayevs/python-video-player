@@ -23,7 +23,7 @@ def play_video():
         fullscreen_window = None
 
     file_path = filedialog.askopenfilename(
-        filetypes=[("Video files", "*.mp4 *.mkv *.avi")]
+        filetypes=[("Video files", "*.mp4 *.mkv *.avi *.mov")]
     )
     if not file_path:
         return
